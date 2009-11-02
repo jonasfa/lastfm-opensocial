@@ -1,0 +1,21 @@
+<messagebundle>
+  <msg name="appTitle">Last.fm - as últimas músicas que eu ouvi</msg>
+  <msg name="appDescription">Um gadget do Last.fm que mostra as últimas 10 músicas que você ouviu.</msg>
+  <msg name="username">Nome de usuário do Last.fm</msg>
+  <msg name="submit">Salvar</msg>
+  <msg name="visit">Visite o meu perfil</msg>
+  <msg name="about">O que é isso?</msg>
+  
+  <msg name="month_name_0">Jan</msg>
+  <msg name="month_name_1">FeV</msg>
+  <msg name="month_name_2">Mar</msg>
+  <msg name="month_name_3">Abr</msg>
+  <msg name="month_name_4">Mai</msg>
+  <msg name="month_name_5">Jun</msg>
+  <msg name="month_name_6">Jul</msg>
+  <msg name="month_name_7">Ago</msg>
+  <msg name="month_name_8">Set</msg>
+  <msg name="month_name_9">Out</msg>
+  <msg name="month_name_10">Nov</msg>
+  <msg name="month_name_11">Dez</msg>
+</messagebundle>

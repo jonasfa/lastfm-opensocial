@@ -1,0 +1,21 @@
+<messagebundle>
+  <msg name="appTitle">Last.fm - the last songs i heard</msg>
+  <msg name="appDescription">A Last.fm gadget wich shows the last 10 songs you heard.</msg>
+  <msg name="username">Last.fm username</msg>
+  <msg name="submit">Save</msg>
+  <msg name="visit">Visit my profile</msg>
+  <msg name="about">What is this?</msg>
+  
+  <msg name="month_name_0">Jan</msg>
+  <msg name="month_name_1">Feb</msg>
+  <msg name="month_name_2">Mar</msg>
+  <msg name="month_name_3">Apr</msg>
+  <msg name="month_name_4">May</msg>
+  <msg name="month_name_5">Jun</msg>
+  <msg name="month_name_6">Jul</msg>
+  <msg name="month_name_7">Aug</msg>
+  <msg name="month_name_8">Sep</msg>
+  <msg name="month_name_9">Oct</msg>
+  <msg name="month_name_10">Nov</msg>
+  <msg name="month_name_11">Dec</msg>
+</messagebundle>
