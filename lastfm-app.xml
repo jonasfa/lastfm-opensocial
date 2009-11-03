@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs
+        title="__MSG_appTitle__"
+        description="__MSG_appDescription__"
+        author="Jonas Alves"
+        author_location="São Paulo, Brazil"
+        author_email="jonasfa@gmail.com"
+        screenshot="http://lastfm-opensocial.googlecode.com/svn/trunk/screenshot.png"
+        thumbnail="http://lastfm-opensocial.googlecode.com/svn/trunk/thumbnail.png">
+  <Require feature="opensocial-0.8" />
+  
+  <Locale messages="http://lastfm-opensocial.googlecode.com/svn/trunk/i18n/ALL_ALL.xml"/>
+  <Locale lang="en" messages="http://lastfm-opensocial.googlecode.com/svn/trunk/i18n/en_ALL.xml"/>
+  <Locale lang="pt" messages="http://lastfm-opensocial.googlecode.com/svn/trunk/i18n/pt_ALL.xml"/>
+</ModulePrefs>
+<Content type="html"><![CDATA[
+  <!-- ALm6fM1yOonmCB8VVj0iLD_AK4t1nJ0kAbnMJtvIBi7zxjtT8FuJn7cIsFBAOtlQ08vPfcIyuA5I3D0FLcON3Mri-BHzzzh9-9dTRZBeJE3fyl72T-yxHeNUMR7PBzmShrIansGo4ROV4xTXcxjwGJbetDu6TT4mh96CsNtwx2IpNh4nqHGYOlw= -->
+  <div id="owner_form_div" style="display:none">
+    <form action="#" id="owner_form" onsubmit="ownerSubmit();return(false);">
+      <label for="lastfm_username">__MSG_username__:</label>
+      <input type="text" name="lastfm_username" id="lastfm_username" />
+      <input type="submit" value="__MSG_submit__" />
+    </form>
+  </div>
+  
+  <div id="chart">
+  </div>
+  
+  <a target="_blank" href="#" id="visit">__MSG_visit__</a>
+  <a target="_blank" href="http://www.last.fm/about" id="about">__MSG_about__</a>
+  
+  <style type="text/css">
+    @import url(http://lastfm-opensocial.googlecode.com/svn/trunk/style.css);
+  </style>
+  
+  <script type="text/javascript">
+    var lastfmUsername = null;
+    var prefs = new gadgets.Prefs();
+    
+    gadgets.util.registerOnLoadHandler(loadGadget);
+    function loadGadget() {
+      var req = opensocial.newDataRequest();
+      
+      req.add(req.newFetchPersonRequest("OWNER"), "get_owner");
+      req.send(responseOwner);
+    }
+    
+    function responseOwner(dataResponse) {
+      var owner = dataResponse.get("get_owner").getData();
+      if (owner != null) {
+        if (owner.isViewer()) {
+          document.getElementById("owner_form_div").style.display = "";
+        }
+        loadLastFMUsername(owner);
+        setTimeout("loadChart()", 1000);
+      }
+    }
+    
+    function ownerSubmit() {
+      req = opensocial.newDataRequest();
+      lastfmUsername = document.getElementById('lastfm_username').value;
+      req.add(req.newUpdatePersonAppDataRequest("VIEWER", 'lastfm_username', lastfmUsername));
+      req.send(loadChart);
+    }
+    
+    function loadLastFMUsername(owner) {
+      var req = opensocial.newDataRequest();
+      var idspec = opensocial.newIdSpec({ "userId" : "OWNER", "groupId" : "SELF" });
+      req.add(req.newFetchPersonAppDataRequest(idspec, "lastfm_username"), "get_data");
+      
+      req.send(function(response) {
+        if (response.get("get_data").hadError()) {
+          document.getElementById("chart").innerHTML = "ERROR";
+        } else {
+          data = response.get("get_data").getData();
+          lastfmUsername = data[owner.getId()]["lastfm_username"];
+          document.getElementById("visit").href = "http://www.last.fm/user/" + lastfmUsername;
+          document.getElementById("visit").style.display = "inline";
+          document.getElementById("lastfm_username").value = lastfmUsername;
+        }
+      });
+    }
+    
+    function loadChart() {
+      var url = "http://ws.audioscrobbler.com/1.0/user/" + lastfmUsername + "/recenttracks.rss?" + new Date().getTime()
+      var params = {};
+      params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.FEED;
+      params[gadgets.io.RequestParameters.NUM_ENTRIES] = 10;
+      gadgets.io.makeRequest(url, loadChart_callback, params);
+    }
+    
+    function loadChart_callback(response) {
+      var html_output = "<table>";
+      
+      for each(entry in response.data.Entry) {
+        html_output += "<tr>";
+        html_output +=   "<td class='title'><a target='_blank' href='" + entry.Link + "'>" + entry.Title + "</a></td>";
+        html_output +=   "<td class='date'>";
+        html_output += new Date(entry.Date*1000).toFormattedString();
+        
+        html_output +=   "</td>";
+        html_output += "</tr>";
+      }
+      html_output += "</table>";
+      
+      
+      document.getElementById("chart").innerHTML = html_output;
+    }
+    
+    Date.prototype.toFormattedString = function() {
+      output = "";
+      output += this.getDate() + " ";
+      output += prefs.getMsg("month_name_"+this.getMonth());
+      output += " ";
+      if (this.getHours() < 10) {
+        output += "0";
+      }
+      output += this.getHours() + ":";
+      if (this.getMinutes() < 10) {
+        output += "0";
+      }
+      output += this.getMinutes();
+      return(output);
+    }
+  </script>
+]]></Content>
+</Module>
