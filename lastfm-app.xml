@@ -92,7 +92,7 @@
     
     function loadChart_callback(response) {
       var html_output = "<table>";
-      
+      console.debug(response.data.Entry.length);
       for(x=0; x++; X < response.data.Entry.length) {
         entry = response.data.Entry[x];
         html_output += "<tr>";
