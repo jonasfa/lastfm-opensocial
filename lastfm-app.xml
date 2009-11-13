@@ -31,7 +31,7 @@
   <a target="_blank" href="http://www.last.fm/about" id="about">__MSG_about__</a>
   
   <style type="text/css">
-    @import url(http://lastfm-opensocial.googlecode.com/svn/trunk/style.css);
+    @import url(http://github.com/jonasfa/lastfm-opensocial/raw/master/style.css);
   </style>
   
   <script type="text/javascript">
