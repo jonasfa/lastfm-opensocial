@@ -6,13 +6,13 @@
         author="Jonas Alves"
         author_location="São Paulo, Brazil"
         author_email="jonasfa@gmail.com"
-        screenshot="http://lastfm-opensocial.googlecode.com/svn/trunk/screenshot.png"
-        thumbnail="http://lastfm-opensocial.googlecode.com/svn/trunk/thumbnail.png">
+        screenshot="http://github.com/jonasfa/lastfm-opensocial/raw/master/screenshot.png"
+        thumbnail="http://github.com/jonasfa/lastfm-opensocial/raw/master/thumbnail.png">
   <Require feature="opensocial-0.8" />
   
-  <Locale messages="http://lastfm-opensocial.googlecode.com/svn/trunk/i18n/ALL_ALL.xml"/>
-  <Locale lang="en" messages="http://lastfm-opensocial.googlecode.com/svn/trunk/i18n/en_ALL.xml"/>
-  <Locale lang="pt" messages="http://lastfm-opensocial.googlecode.com/svn/trunk/i18n/pt_ALL.xml"/>
+  <Locale messages="http://github.com/jonasfa/lastfm-opensocial/raw/master/i18n/ALL_ALL.xml"/>
+  <Locale lang="en" messages="http://github.com/jonasfa/lastfm-opensocial/raw/master/i18n/en_ALL.xml"/>
+  <Locale lang="pt" messages="http://github.com/jonasfa/lastfm-opensocial/raw/master/i18n/pt_ALL.xml"/>
 </ModulePrefs>
 <Content type="html"><![CDATA[
   <!-- ALm6fM1yOonmCB8VVj0iLD_AK4t1nJ0kAbnMJtvIBi7zxjtT8FuJn7cIsFBAOtlQ08vPfcIyuA5I3D0FLcON3Mri-BHzzzh9-9dTRZBeJE3fyl72T-yxHeNUMR7PBzmShrIansGo4ROV4xTXcxjwGJbetDu6TT4mh96CsNtwx2IpNh4nqHGYOlw= -->
