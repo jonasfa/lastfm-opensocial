@@ -97,7 +97,7 @@
         html_output += "<tr>";
         html_output +=   "<td class='title'><a target='_blank' href='" + response.data.Entry[entry].Link + "'>" + response.data.Entry[entry].Title + "</a></td>";
         html_output +=   "<td class='date'>";
-        html_output += new Date(response.data.Entry[entry].Date*1000).toFormattedString();
+        html_output += new Date(response.data.Entry[entry].Date).toFormattedString();
         
         html_output +=   "</td>";
         html_output += "</tr>";
